@@ -53,7 +53,7 @@ public class TaskController {
     }
 
 
-    @RequestMapping(method = RequestMethod.PUT, value = "task")
+    @RequestMapping(method = RequestMethod.PUT, value = "task", consumes = APPLICATION_JSON_VALUE)
     public TaskDto updateTask(@RequestBody TaskDto taskDto) {
 
         return taskMapper
