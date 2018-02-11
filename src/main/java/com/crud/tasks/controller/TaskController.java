@@ -11,7 +11,7 @@ import java.util.List;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
-@RequestMapping("/v1/")
+@RequestMapping(value = "/v1/tasks")
 
 public class TaskController {
 
@@ -21,8 +21,7 @@ public class TaskController {
     @Autowired
     private TaskMapper taskMapper;
 
-
-    @RequestMapping(method = RequestMethod.GET, value = "tasks")
+    @GetMapping
     public List<TaskDto> getTasks() {
 
         return taskMapper
@@ -31,8 +30,7 @@ public class TaskController {
                                 .getAllTasks());
     }
 
-
-    @RequestMapping(method = RequestMethod.GET, value = "task/{id}")
+    @GetMapping(value = "/{id}")
     public TaskDto getTask(@PathVariable(value = "id") Long taskId) throws TaskNotFoundException {
 
         return taskMapper
@@ -43,7 +41,7 @@ public class TaskController {
     }
 
 
-    @RequestMapping(method = RequestMethod.POST, value = "task", consumes = APPLICATION_JSON_VALUE)
+    @PostMapping
     public void createTask(@RequestBody TaskDto taskDto) {
 
         dbService
@@ -53,7 +51,7 @@ public class TaskController {
     }
 
 
-    @RequestMapping(method = RequestMethod.PUT, value = "task", consumes = APPLICATION_JSON_VALUE)
+    @PutMapping
     public TaskDto updateTask(@RequestBody TaskDto taskDto) {
 
         return taskMapper
@@ -64,11 +62,10 @@ public class TaskController {
     }
 
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "task/{id}")
+    @DeleteMapping(value = "{id}")
     public void deleteTask(@PathVariable(value = "id") Long taskId) throws TaskNotFoundException {
 
         dbService.deleteTask(taskId);
-
 
     }
 
