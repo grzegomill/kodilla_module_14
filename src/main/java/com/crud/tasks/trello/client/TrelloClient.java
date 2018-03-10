@@ -19,7 +19,6 @@ import java.util.List;
 
 import static java.util.Optional.ofNullable;
 
-
 @Component
 public class TrelloClient {
 
@@ -33,14 +32,16 @@ public class TrelloClient {
 
     public List<TrelloBoardDto> getTrelloBoards() {
 
-        TrelloBoardDto[] boardsResponse = restTemplate
-                .getForObject(
-                        getTrelloMembersBoardsUrl(),
-                        TrelloBoardDto[].class);
         try {
+
+            TrelloBoardDto[] boardsResponse = restTemplate
+                    .getForObject(
+                            getTrelloMembersBoardsUrl(),
+                            TrelloBoardDto[].class);
 
             return Arrays
                     .asList(
+
                             ofNullable(boardsResponse)
                                     .orElse(new TrelloBoardDto[0])
                     );
