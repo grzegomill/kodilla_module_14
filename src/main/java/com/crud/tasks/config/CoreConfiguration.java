@@ -12,4 +12,11 @@ public class CoreConfiguration {
 
         return new RestTemplate();
     }
+
+
+    @Bean
+    public int Tmp() {
+
+        return 1;
+    }
 }
