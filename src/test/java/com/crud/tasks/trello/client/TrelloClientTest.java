@@ -1,8 +1,8 @@
 package com.crud.tasks.trello.client;
 
-import com.crud.tasks.domain.CreatedTrelloCard;
-import com.crud.tasks.domain.TrelloBoardDto;
-import com.crud.tasks.domain.TrelloCardDto;
+import com.crud.tasks.trello.domain.CreatedTrelloCard;
+import com.crud.tasks.trello.domain.TrelloBoardDto;
+import com.crud.tasks.trello.domain.TrelloCardDto;
 import com.crud.tasks.trello.config.TrelloConfig;
 import org.junit.Before;
 import org.junit.Test;
@@ -87,8 +87,7 @@ public class TrelloClientTest {
 
         //When
 
-        when(restTemplate.postForObject(uri, null, CreatedTrelloCard.class))
-                .thenReturn(createdTrelloCard);
+        when(restTemplate.postForObject(uri, null, CreatedTrelloCard.class)).thenReturn(createdTrelloCard);
 
         assertEquals("1", createdTrelloCard.getId());
         assertEquals("Test task", createdTrelloCard.getName());
