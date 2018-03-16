@@ -61,7 +61,7 @@ public class TaskController {
     }
 
 
-    @DeleteMapping(value = "{id}")
+    @DeleteMapping(value = "/{id}")
     public void deleteTask(@PathVariable(value = "id") Long taskId) throws TaskNotFoundException {
 
         dbService.deleteTask(taskId);
