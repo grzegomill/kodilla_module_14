@@ -1,15 +1,15 @@
 package com.crud.tasks.trello.client;
 
+import com.crud.tasks.trello.config.TrelloConfig;
 import com.crud.tasks.trello.domain.CreatedTrelloCard;
 import com.crud.tasks.trello.domain.TrelloBoardDto;
 import com.crud.tasks.trello.domain.TrelloCardDto;
-import com.crud.tasks.trello.config.TrelloConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
@@ -85,10 +85,13 @@ public class TrelloClientTest {
                 "Test task",
                 "http://test.com");
 
-        //When
-
         when(restTemplate.postForObject(uri, null, CreatedTrelloCard.class)).thenReturn(createdTrelloCard);
 
+        //When
+        CreatedTrelloCard newCard = trelloClient.createNewCard(trelloCardDto);
+
+
+        //Then
         assertEquals("1", createdTrelloCard.getId());
         assertEquals("Test task", createdTrelloCard.getName());
         assertEquals("http://test.com", createdTrelloCard.getShortUrl());
