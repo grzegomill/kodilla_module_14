@@ -43,7 +43,7 @@ public class SimpleEmailService {
 
         mailMessage.setTo(mail.getMailTo());
 
-        if (!tmpCC.isEmpty() && tmpCC != null) {
+        if (tmpCC != null && !tmpCC.isEmpty()) {
             mailMessage.setCc(tmpCC);
         }
 
