@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin("*") //@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = "/v1/tasks")
 

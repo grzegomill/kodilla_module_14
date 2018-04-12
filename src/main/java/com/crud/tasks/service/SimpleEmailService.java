@@ -30,7 +30,7 @@ public class SimpleEmailService {
 
         } catch (MailException e) {
 
-            LOGGER.error("Failed  to process  email sending:", e.getMessage(), e);
+            LOGGER.error("Failed  to process  email sending:" + mail.getMailTo(), e.getMessage(), e);
 
         }
     }
@@ -39,7 +39,9 @@ public class SimpleEmailService {
 
         final String tmpCC = mail.getToCc();
 
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        final SimpleMailMessage mailMessage = new SimpleMailMessage();
+
+        mailMessage.setFrom(mail.getFrom());
 
         mailMessage.setTo(mail.getMailTo());
 

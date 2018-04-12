@@ -42,6 +42,7 @@ public class TrelloService {
                 emailService
                         .send(
                                 new Mail(
+                                        adminConfig.getMailFrom(),
                                         adminConfig.getAdminMail(),
                                         "",
                                         SUBJECT,

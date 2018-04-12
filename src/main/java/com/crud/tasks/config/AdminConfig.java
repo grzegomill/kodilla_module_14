@@ -11,4 +11,7 @@ public class AdminConfig {
 
     @Value("${admin.mail}")
     private String adminMail;
+
+    @Value("${mail.from}")
+    private String mailFrom;
 }
