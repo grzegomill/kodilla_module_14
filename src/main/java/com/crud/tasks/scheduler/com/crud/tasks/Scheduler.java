@@ -9,7 +9,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
-public class scheduler {
+public class Scheduler {
 
     @Autowired
     private SimpleEmailService simpleEmailService;
